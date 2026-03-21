@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ประกาศ</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Tahoma;
+background:#f7c6d6;
+margin:0;
+padding:0;
+color:#333;
+}
+
+h1{
+text-align:center;
+background:#e67a9a;
+color:white;
+padding:18px;
+margin:0;
+font-size:26px;
+}
+
+.menu{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:15px;
+background:#f0a9bd;
+}
+
+.menu button{
+padding:10px 18px;
+border:none;
+background:#f08aa7;
+color:white;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.page{
+display:none;
+padding:30px;
+}
+
+.box{
+max-width:650px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:14px;
+border-radius:10px;
+border:1px solid #ffc2d3;
+background:#fff5f8;
+}
+
+button.action{
+background:#ff6f9c;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button.copy{
+margin-top:6px;
+background:#ffb3c8;
+border:none;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.log{
+background:#fff7fb;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
+white-space:pre-wrap;
+border:1px solid #ffd0df;
+font-family:monospace;
+}
+
+.ruleItem{
+display:flex;
+justify-content:space-between;
+margin-bottom:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>⚙️ ประกาศ Time Town ⚙️</h1>
+
+<div class="menu">
+<button onclick="showPage('warnPage')">ประกาศตักเตือน</button>
+<button onclick="showPage('coolPage')">ประกาศคูลดาวน์</button>
+<button onclick="showPage('casePage')">ไม่พบเคสสลบ</button>
+<button onclick="showPage('logPage')">บันทึกประกาศ</button>
+</div>
+
+<div id="warnPage" class="page">
+<div class="box">
+
+<h2>📢 ประกาศตักเตือน</h2>
+
+<label>เลือกตระกูล</label>
+<select id="gang">
+    
+<!-- เรียงตามตัวเลขก่อน -->
+<option>21ˢᵗ [21ˢᵗ]</option>
+<option>28GEN [28]</option>
+<option>1995 [IX95]</option>
+
+<!-- เรียงตามตัวอักษร A-Z -->
+<option>As Soon As Possible[A$AP]</option>
+<option>ATLAS [A]</option>
+<option>ATLAS [AL]</option>
+<option>BADPORYOUNG [BAD]</option>
+<option>Dek Hud Doen (DHD)</option>
+<option>Dubaiboy [DBB]</option>
+<option>Iconic [CON]</option>
+<option>IDontgiveafuq [IDGF]</option>
+<option>LAST NIGHT (LN)</option>
+<option>LUCIASTYLE [LCS]</option>
+<option>Nompong [NP]</option>
+<option>R RAI KON (RRK)</option>
+<option>Shelikenisaileow [SHE]</option>
+<option>VARENTHAS [VRT]</option>
+<option>Yaoguai [YG]</option>
+</select>
+
+<label>เตือนครั้งที่</label>
+<select id="warnLevel">
+<option value="1">ครั้งที่ 1</option>
+<option value="2">ครั้งที่ 2</option>
+</select>
+<label>เลือกข้อกฎ</label>
+
+<select id="ruleSelect">
+<option value="">เลือกข้อ</option>
+<option value="10|100000|สวมใส่หน้ากากหรือสิ่งปกปิดใบหน้าในเขตพื้นที่โรงพยาบาล">ข้อ 10 สวมใส่หน้ากากหรือสิ่งปกปิดใบหน้าในเขตพื้นที่โรงพยาบาล (100,000)</option>
+<option value="11|1000000|ดูหมิ่น เหยียดหยาม เสียดสี ข่มขู่ ก่อกวน และแสดงพฤติกรรมไม่เหมาะสม">ข้อ 11 ดูหมิ่น เหยียดหยาม เสียดสี ข่มขู่ ก่อกวน และแสดงพฤติกรรมไม่เหมาะสม ( 1,000,000)</option>
+<option value="11|1000000|ใช้ความรุนแรง คุกคาม และแสดงพฤติกรรมไม่เหมาะสมต่อบุคลากรทางการแพทย์">ข้อ 11 ใช้ความรุนแรง คุกคาม และแสดงพฤติกรรมไม่เหมาะสมต่อบุคลากรทางการแพทย์ (1000000)</option>
+<option value="12|1000000|แอบอ้างเป็นหน่วยงาน หมอ และใส่ชุดของหน่วยงาน">ข้อ 12 แอบอ้างเป็นหน่วยงาน หมอ และใส่ชุดของหน่วยงาน (1,000,000 )</option>
+<option value="15|1000000|มีอุปกรณ์ทางการแพทย์ เครื่องมือแพทย์">ข้อ 15 มีอุปกรณ์ทางการแพทย์ เครื่องมือแพทย์ (1,000,000 )</option>
+<option value="13|500000|บั๊มรถในพื้นที่โรงพยาบาล">ข้อ 13 บั๊มรถในพื้นที่โรงพยาบาล (500,000)</option>
+<option value="4|100000|ควักอาวุธในพื้นที่โรงพยาบาล">ข้อ 4 ควักอาวุธในพื้นที่โรงพยาบาล (100,000)</option>
+<option value="14|500000|ควักอาวุธในพื้นที่โรงพยาบาลกรณ๊มีสตอรี่">ข้อ 14 ควักอาวุธในพื้นที่โรงพยาบาลกรณ๊มีสตอรี่ (500,000)</option>
+<option value="14|500000|ขับรถเข้ามาในพี้นที่โรงพยาบาล">ข้อ 14 ขับรถเข้ามาในพี้นที่โรงพยาบาล (500,000)</option>
+<option value="2|500000|ชุบเพื่อนต่อหน้าแพทย์">ข้อ 14 ชุบเพื่อนต่อหน้าแพทย์ (500,000)</option>
+<option value="1|500000|ไม่เก็บรถก่อนเข้าพื้นที่โรงพยาบาล">ข้อ 1 ไม่เก็บรถก่อนเข้าพื้นที่โรงพยาบาล (500,000)</option>
+<option value="2|100000|กดเรียกเคสจากวอโซน หรือ แอร์ดรอป">ข้อ 2 กดเรียกเคสจากวอโซน หรือ แอร์ดรอป (100,000)</option>
+<option value="5|1000000|พูดจาหรือแสดงพฤติกรรมข่มขู่แพทย์ ">ข้อ 5 พูดจาหรือแสดงพฤติกรรมข่มขู่แพทย์ (1,000,000)</option>
+<option value="6|1000000|ทำร้ายร่างกายหน่วยงานแพทย์บาดเจ็บ">ข้อ 6 ทำร้ายร่างกายหน่วยงานแพทย์บาดเจ็บ (1,000,000)</option>
+<option value="6|3000000|ทำร้ายร่างกายหน่วยงานแพทย์สลบ">ข้อ 6 ทำร้ายร่างกายหน่วยงานแพทย์สลบ (3,000,000)</option>
+<option value="7|500000|ตีกันในระยะสายตาแพทย์">ข้อ 7 ตีกันในระยะสายตาแพทย์ (500,000)</option>
+<option value="7|500000|ทะเลาะวิวาททำร้ายร่างกายในพื้นที่โรงพยาบาลหรือระยะสายตาแพทย์">ข้อ 7 ทะเลาะวิวาททำร้ายร่างกายในพื้นที่โรงพยาบาลหรือระยะสายตาแพทย์ (500,000)</option>
+<option value="8|500000|บลัฟ ล้อหลอก แซะ หรือใช้คำหยาบคายต่อหน้าแพทย์">ข้อ 8 บลัฟ ล้อหลอก แซะ หรือใช้คำหยาบคายต่อหน้าแพทย์ (500,000)</option>
+<option value="9|300000|ถ่ายภาพหน่วยงานแพทย์หรือยานพาหนะหน่วยงานแพทย์ลงโซเชียล">ข้อ 9 ถ่ายภาพหน่วยงานแพทย์หรือยานพาหนะหน่วยงานแพทย์ลงโซเชียล (300,000)</option>
+<option value="10|300000|ก่อกวนหรือส่งเสียงดังในพื้นที่โรงพยาบาล">ข้อ 10 ก่อกวนหรือส่งเสียงดังในพื้นที่โรงพยาบาล (300,000)</option>
+<option value="11|1000000|กระทำอนาจารในพื้นที่โรงพยาบาล">ข้อ 11 กระทำอนาจารในพื้นที่โรงพยาบาล(1,000,000)</option>
+<option value="12|4000000|ขโมยหรือทำลายยานพาหนะของหน่วยงานแพทย์ ">ข้อ 12 ขโมยหรือทำลายยานพาหนะของหน่วยงานแพทย์ (4,000,000)</option>
+<option value="14|500000|หลบเข้าพื้นที่โรงพยาบาลขณะมีสตอรี่">ข้อ 14 หลบเข้าพื้นที่โรงพยาบาลขณะมีสตอรี่ (500,000)</option>
+<option value="16|500000|ไม่ออกจากพื้นที่โรงพยาบาลหลังทำการรักษาเสร็จ ">ข้อ 16 ไม่ออกจากพื้นที่โรงพยาบาลหลังทำการรักษาเสร็จ (500,000)</option>
+<option value="18|1000000|เคลื่อนย้ายศพหลังจบไฟต์">ข้อ 18 เคลื่อนย้ายศพหลังจบไฟต์ (1,000,000)</option>
+<option value="20|2000000|ไม่คืนศพให้หน่วยงานตามประกาศ">ข้อ 20 ไม่คืนศพให้หน่วยงานตามประกาศ (2,000,000)</option>
+<option value="21|3000000|อุ้มคาเท้าโดยหน่วยงานไม่ครบตามกฎ (หมอ7 ตำรวจ7 )">ข้อ 21 อุ้มคาเท้าโดยหน่วยงานไม่ครบตามกฎ  (หมอ7 ตำรวจ7 ) (3,000,000)</option>
+<option value="22|4000000|ห่อศพโดยหน่วยงานไม่ครบตามกฎ (หมอ9 ตำรวจ12)">ข้อ 22 ห่อศพโดยหน่วยงานไม่ครบตามกฎ (หมอ9 ตำรวจ12)(4,000,000)</option>
+
+
+</select>
+
+
+<button class="action" onclick="addRule()">เพิ่มข้อ</button>
+
+<div id="ruleList" class="log"></div>
+
+
+<label>เนื่องจาก</label>
+<input id="reason">
+
+<label>ค่าปรับ</label>
+<input id="fine">
+
+<label>สถานะ</label>
+<select id="status">
+<option selected>ยังไม่ชำระ</option>
+<option>ชำระแล้ว</option>
+</select>
+
+<button class="action" onclick="warn()">สร้างประกาศ</button>
+
+<h3>📢 FiveM</h3>
+<div id="warnFiveM" class="log"></div>
+<button class="copy" onclick="copyText('warnFiveM',this)">คัดลอก</button>
+
+<h3>💬 Discord</h3>
+<div id="warnDiscord" class="log"></div>
+<button class="copy" onclick="copyText('warnDiscord',this)">คัดลอก</button>
+
+</div>
+</div>
+
+<div id="coolPage" class="page">
+<div class="box">
+
+<h2>⏱ ประกาศคูลดาวน์</h2>
+
+<label>เลือกตระกูล</label>
+<select id="coolGang">
+
+<!-- เรียงตามตัวเลขก่อน -->
+<option>21ˢᵗ [21ˢᵗ]</option>
+<option>28GEN [28]</option>
+<option>1995 [IX95]</option>
+
+<!-- เรียงตามตัวอักษร A-Z -->
+<option>As Soon As Possible[A$AP]</option>
+<option>ATLAS [A]</option>
+<option>ATLAS [AL]</option>
+<option>BADPORYOUNG [BAD]</option>
+<option>Dek Hud Doen (DHD)</option>
+<option>Dubaiboy [DBB]</option>
+<option>Iconic [CON]</option>
+<option>IDontgiveafuq [IDGF]</option>
+<option>LAST NIGHT (LN)</option>
+<option>LUCIASTYLE [LCS]</option>
+<option>Nompong [NP]</option>
+<option>R RAI KON (RRK)</option>
+<option>Shelikenisaileow [SHE]</option>
+<option>VARENTHAS [VRT]</option>
+<option>Yaoguai [YG]</option>
+</select>
+
+<button class="action" onclick="cooldown()">สร้างประกาศ</button>
+
+<h3>📢 FiveM</h3>
+<div id="coolFiveM" class="log"></div>
+<button class="copy" onclick="copyText('coolFiveM',this)">คัดลอก</button>
+
+<h3>💬 Discord</h3>
+<div id="coolDiscord" class="log"></div>
+<button class="copy" onclick="copyText('coolDiscord',this)">คัดลอก</button>
+
+</div>
+</div>
+
+<div id="casePage" class="page">
+<div class="box">
+
+<h2>🚑 ไม่พบเคสสลบ</h2>
+
+<label>เบอร์โทร</label>
+<input id="casePhone">
+
+<button class="action" onclick="caseMsg()">สร้างข้อความ</button>
+
+<h3>💬 Discord</h3>
+<div id="caseDiscord" class="log"></div>
+<button class="copy" onclick="copyText('caseDiscord',this)">คัดลอก</button>
+
+<h3>📢 FiveM</h3>
+<div id="caseGame" class="log"></div>
+<button class="copy" onclick="copyText('caseGame',this)">คัดลอก</button>
+
+</div>
+</div>
+
+<div id="logPage" class="page">
+<div class="box">
+<h2>📜 บันทึกประกาศ</h2>
+<div id="history"></div>
+</div>
+</div>
+
+<script>
+
+function showPage(id){
+document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+document.getElementById(id).style.display="block";
+
+if(id === "logPage"){
+    renderHistory()
+}
+}
+
+showPage("warnPage")
+
+let rules=[]
+let totalFine=0
+
+function addRule(){
+
+let value=document.getElementById("ruleSelect").value
+if(!value)return
+
+let data=value.split("|")
+
+rules.push({
+rule:data[0],
+fine:Number(data[1]),
+reason:data[2]
+})
+
+updateRules()
+
+}
+
+function updateRules(){
+
+let box=document.getElementById("ruleList")
+box.innerHTML=""
+
+totalFine=0
+
+rules.forEach((r,i)=>{
+
+totalFine+=r.fine
+
+let div=document.createElement("div")
+div.className="ruleItem"
+
+div.innerHTML=`ข้อ ${r.rule} (${r.fine})
+<button onclick="removeRule(${i})">ลบ</button>`
+
+box.appendChild(div)
+
+})
+
+document.getElementById("fine").value=totalFine.toLocaleString()
+
+updateReason()
+
+}
+
+function removeRule(index){
+rules.splice(index,1)
+updateRules()
+}
+
+function updateReason(){
+
+let autoReason = rules.map(r=>r.reason).join(", ")
+
+let reasonInput=document.getElementById("reason")
+
+if(reasonInput.value=="" || reasonInput.dataset.auto=="true"){
+reasonInput.value=autoReason
+reasonInput.dataset.auto="true"
+}
+
+}
+
+function getRuleText(){
+return rules.map(r=>r.rule).join(",")
+}
+
+function time(){
+return new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})
+}
+
+function date(){
+return new Date().toLocaleDateString('th-TH')
+}
+
+let historyData = JSON.parse(localStorage.getItem("gangHistory")) || []
+
+function warn(){
+
+let gang=document.getElementById("gang").value
+let reason=document.getElementById("reason").value
+let fine=document.getElementById("fine").value
+let status=document.getElementById("status").value
+let level=document.getElementById("warnLevel").value
+
+let ruleText=getRuleText()
+
+let statusText = status=="ชำระแล้ว" ? "+สถานะ : ชำระแล้ว" : "-สถานะ : ยังไม่ชำระ"
+
+let fivem=`/gov ประกาศตักเตือน ตระกูล ${gang} เนื่องจาก ${reason}
+เตือนครั้งที่ ${level} รวม ตักเตือน ${level} ครั้ง ขอบคุณค่ะ/ครับ`
+
+let discord=`📢 ประกาศตักเตือน
+ตระกูล ${gang}
+เหตุผล : ${reason}
+เตือนครั้งที่ ${level}`
+
+
+if(level==2){
+
+let nowTime = time()
+let nowDate = date()
+
+if(status=="ยังไม่ชำระ"){
+    fivem=`/gov ประกาศ Blacklist ตระกูล ${gang} เนื่องจาก ${reason} ขอบคุณครับ/ค่ะ`
+}else{
+    fivem=`/gov ประกาศปลด Blacklist ตระกูล ${gang} เนื่องจาก ชำระแล้ว`
+}
+
+discord=`#  ⛔  __ BLACKLIST __ ⛔
+
+\`\`\`diff
+ตระกูล: ${gang}
+หัวข้อ : BLACKLIST ข้อที่ ${ruleText} เนื่องจาก ${reason}
+( เมื่อเวลา ${nowTime} น. วันที่ ${nowDate} )
+ค่าปรับ : ${fine} TD
+${statusText}
+\`\`\`
+
+<@&1335511632587128954> <@&1364843875105243206>`
+}
+
+document.getElementById("warnFiveM").innerText=fivem
+document.getElementById("warnDiscord").innerText=discord
+
+saveHistory(discord)
+
+}
+
+function cooldown(){
+
+let gang=document.getElementById("coolGang").value
+
+let now=new Date()
+let end=new Date(now.getTime()+10*60000)
+
+let start=now.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})
+let stop=end.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})
+
+let text=`ประกาศ รบกวน ตระกูล ${gang} ออกจากพื้นที่โรงพยาบาลภายใน ระยะเวลา 10 นาที
+เริ่มตั้งแต่เวลา ${start} ถึง ${stop} น. ขอบคุณครับ/ค่ะ`
+
+let discord=`\`\`\`
+${text}
+\`\`\`
+<@&1335511632587128954> <@&1364843875105243206>`
+
+document.getElementById("coolFiveM").innerText="/gov "+text
+document.getElementById("coolDiscord").innerText=discord
+
+saveHistory(text)
+
+}
+
+function caseMsg(){
+
+let phone=document.getElementById("casePhone").value
+
+let discord=`รบกวน เบอร์ ${phone} แพทย์ไม่พบร่างผู้สลบกรุณาติดต่อ หรือ แจ้งจุดสลบ ได้เลยค่ะ/ครับ
+<@&1335511632587128954><@&1364843875105243206>`
+
+let game=`/gov รบกวน เบอร์ ${phone} แพทย์ไม่พบร่างผู้สลบกรุณาติดต่อ หรือ แจ้งจุดสลบ ได้เลยค่ะ/ครับ`
+
+document.getElementById("caseGame").innerText=game
+document.getElementById("caseDiscord").innerText=discord
+
+
+saveHistory(discord)
+
+}
+
+function copyText(id,btn){
+navigator.clipboard.writeText(document.getElementById(id).innerText)
+btn.innerText="คัดลอกแล้ว ✓"
+}
+
+function saveHistory(text){
+
+historyData.unshift({
+text:text,
+time:time()+" "+date()
+})
+
+localStorage.setItem("gangHistory",JSON.stringify(historyData))
+renderHistory()
+
+}
+
+function renderHistory(){
+
+let box=document.getElementById("history")
+box.innerHTML=""
+
+historyData.forEach((item,index)=>{
+
+let div=document.createElement("div")
+div.className="log"
+
+div.innerHTML=
+item.time+
+"<br><br>"+
+item.text+
+"<br><br>"+
+`<button onclick="deleteLog(${index})">🗑 ลบ</button>`
+
+box.appendChild(div)
+
+})
+
+}
+
+function deleteLog(index){
+
+historyData.splice(index,1)
+localStorage.setItem("gangHistory",JSON.stringify(historyData))
+renderHistory()
+
+}
+
+renderHistory()
+
+</script>
+
+</body>
+</html>
