@@ -288,13 +288,13 @@ margin-bottom:5px;
 
 <button class="action" onclick="caseMsg()">สร้างข้อความ</button>
 
-<h3>💬 Discord</h3>
-<div id="caseDiscord" class="log"></div>
-<button class="copy" onclick="copyText('caseDiscord',this)">คัดลอก</button>
-
 <h3>📢 FiveM</h3>
 <div id="caseGame" class="log"></div>
 <button class="copy" onclick="copyText('caseGame',this)">คัดลอก</button>
+    
+<h3>💬 Discord</h3>
+<div id="caseDiscord" class="log"></div>
+<button class="copy" onclick="copyText('caseDiscord',this)">คัดลอก</button>
 
 </div>
 </div>
@@ -433,7 +433,7 @@ if(status=="ยังไม่ชำระ"){
 discord=`#  ⛔  __ BLACKLIST __ ⛔
 
 \`\`\`diff
-ตระกูล: ${gang}
+แก๊ง : ${gang}
 หัวข้อ : BLACKLIST ข้อที่ ${ruleText} เนื่องจาก ${reason}
 ( เมื่อเวลา ${nowTime} น. วันที่ ${nowDate} )
 ค่าปรับ : ${fine} TD
@@ -460,7 +460,7 @@ let end=new Date(now.getTime()+10*60000)
 let start=now.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})
 let stop=end.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})
 
-let text=`ประกาศ รบกวน ตระกูล ${gang} ออกจากพื้นที่โรงพยาบาลภายใน ระยะเวลา 10 นาที
+let text=`ประกาศ รบกวน แก๊ง ${gang} ออกจากพื้นที่โรงพยาบาลภายใน ระยะเวลา 10 นาที
 เริ่มตั้งแต่เวลา ${start} ถึง ${stop} น. ขอบคุณครับ/ค่ะ`
 
 let discord=`\`\`\`
@@ -479,10 +479,11 @@ function caseMsg(){
 
 let phone=document.getElementById("casePhone").value
 
+let game=`/gov รบกวน เบอร์ ${phone} แพทย์ไม่พบร่างผู้สลบกรุณาติดต่อ หรือ แจ้งจุดสลบ ได้เลยค่ะ/ครับ`
+    
 let discord=`รบกวน เบอร์ ${phone} แพทย์ไม่พบร่างผู้สลบกรุณาติดต่อ หรือ แจ้งจุดสลบ ได้เลยค่ะ/ครับ
 <@&1335511632587128954><@&1364843875105243206>`
 
-let game=`/gov รบกวน เบอร์ ${phone} แพทย์ไม่พบร่างผู้สลบกรุณาติดต่อ หรือ แจ้งจุดสลบ ได้เลยค่ะ/ครับ`
 
 document.getElementById("caseGame").innerText=game
 document.getElementById("caseDiscord").innerText=discord
