@@ -118,7 +118,7 @@ margin-bottom:5px;
 
 <h2>📢 ประกาศตักเตือน</h2>
 
-<label>เลือกตระกูล</label>
+<label>เลือกแก๊ง</label>
 <select id="gang">
     
 <!-- เรียงตามตัวเลขก่อน -->
@@ -240,7 +240,7 @@ margin-bottom:5px;
 
 <h2>⏱ ประกาศคูลดาวน์</h2>
 
-<label>เลือกตระกูล</label>
+<label>เลือกแก๊ง</label>
 <select id="coolGang">
 
 <!-- เรียงตามตัวเลขก่อน -->
@@ -410,11 +410,11 @@ let ruleText=getRuleText()
 
 let statusText = status=="ชำระแล้ว" ? "+สถานะ : ชำระแล้ว" : "-สถานะ : ยังไม่ชำระ"
 
-let fivem=`/gov ประกาศตักเตือน ตระกูล ${gang} เนื่องจาก ${reason}
+let fivem=`/gov ประกาศตักเตือน แก๊ง ${gang} เนื่องจาก ${reason}
 เตือนครั้งที่ ${level} รวม ตักเตือน ${level} ครั้ง ขอบคุณค่ะ/ครับ`
 
 let discord=`📢 ประกาศตักเตือน
-ตระกูล ${gang}
+แก๊ง ${gang}
 เหตุผล : ${reason}
 เตือนครั้งที่ ${level}`
 
@@ -425,9 +425,9 @@ let nowTime = time()
 let nowDate = date()
 
 if(status=="ยังไม่ชำระ"){
-    fivem=`/gov ประกาศ Blacklist ตระกูล ${gang} เนื่องจาก ${reason} ขอบคุณครับ/ค่ะ`
+    fivem=`/gov ประกาศ Blacklist แก๊ง ${gang} เนื่องจาก ${reason} ขอบคุณครับ/ค่ะ`
 }else{
-    fivem=`/gov ประกาศปลด Blacklist ตระกูล ${gang} เนื่องจาก ชำระแล้ว`
+    fivem=`/gov ประกาศปลด Blacklist แก๊ง ${gang} เนื่องจาก ชำระแล้ว`
 }
 
 discord=`#  ⛔  __ BLACKLIST __ ⛔
